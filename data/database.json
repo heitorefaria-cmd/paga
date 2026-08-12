@@ -1,0 +1,246 @@
+{
+  "users": [
+    {
+      "id": "usr_admin",
+      "username": "segredo",
+      "name": "Administrador Segredo",
+      "passwordHash": "$2b$10$Q8yzLwgdfm0dMs1MEVK9pe9m9JJYo4YwdP2OSeWcGHe8XVDM0zA36",
+      "birthDate": "1995-01-01",
+      "age": 31,
+      "bio": "Conta oficial de administração e suporte Ignite Match.",
+      "location": "São Paulo, SP",
+      "gender": "man",
+      "lookingFor": "everyone",
+      "avatar": "https://images.unsplash.com/photo-1534528741775-53994a69daeb?q=80&w=600&auto=format&fit=crop",
+      "photos": [
+        "https://images.unsplash.com/photo-1534528741775-53994a69daeb?q=80&w=600&auto=format&fit=crop"
+      ],
+      "interests": [
+        "Segurança",
+        "Tecnologia",
+        "Design"
+      ],
+      "occupation": "Gerente da Plataforma",
+      "role": "admin",
+      "status": "offline",
+      "lastSeen": "2026-08-09T07:39:54.547Z",
+      "createdAt": "2026-08-09T07:24:39.000Z"
+    },
+    {
+      "id": "usr_marina",
+      "username": "marina",
+      "name": "Marina Silva",
+      "passwordHash": "$2b$10$1xdNBFsyb3hSOjiyNwbLRucWhfJyDj9nL.UtZKnqKkuEHgD/kdYue",
+      "birthDate": "1999-05-14",
+      "age": 27,
+      "bio": "Arquiteta, apaixonada por café espresso, fotografia analógica e viagens espontâneas ☕📸✨. Procurando alguém para dividir boas conversas e um bom vinho.",
+      "location": "São Paulo, SP",
+      "gender": "woman",
+      "lookingFor": "man",
+      "avatar": "https://images.unsplash.com/photo-1524504388940-b1c1722653e1?q=80&w=600&auto=format&fit=crop",
+      "photos": [
+        "https://images.unsplash.com/photo-1524504388940-b1c1722653e1?q=80&w=600&auto=format&fit=crop",
+        "https://images.unsplash.com/photo-1517841905240-472988babdf9?q=80&w=600&auto=format&fit=crop",
+        "https://images.unsplash.com/photo-1494790108377-be9c29b29330?q=80&w=600&auto=format&fit=crop",
+        "https://pt.wikipedia.org/wiki/Pau-de-chuva"
+      ],
+      "interests": [
+        "Café Especial",
+        "Fotografia",
+        "Arquitetura",
+        "Cinema",
+        "Vinho"
+      ],
+      "occupation": "Arquiteta e Designer de Interiores",
+      "role": "user",
+      "status": "offline",
+      "lastSeen": "2026-08-09T07:44:43.212Z",
+      "createdAt": "2026-08-09T07:24:39.000Z"
+    },
+    {
+      "id": "usr_asaph",
+      "username": "asaph",
+      "name": "Asaph Costa",
+      "passwordHash": "$2b$10$1xdNBFsyb3hSOjiyNwbLRucWhfJyDj9nL.UtZKnqKkuEHgD/kdYue",
+      "birthDate": "1997-11-20",
+      "age": 28,
+      "bio": "Engenheiro de Software e músico nas horas vagas 🎸💻. Curto trilhas, tecnologia, música indie e restaurantes legais.",
+      "location": "São Paulo, SP",
+      "gender": "man",
+      "lookingFor": "woman",
+      "avatar": "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=600&auto=format&fit=crop",
+      "photos": [
+        "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=600&auto=format&fit=crop",
+        "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?q=80&w=600&auto=format&fit=crop"
+      ],
+      "interests": [
+        "Tecnologia",
+        "Guitarra",
+        "Trilhas",
+        "Música Indie",
+        "Gastronomia"
+      ],
+      "occupation": "Engenheiro de Software",
+      "role": "user",
+      "status": "online",
+      "lastSeen": "2026-08-09T07:24:39.000Z",
+      "createdAt": "2026-08-09T07:24:39.000Z"
+    },
+    {
+      "id": "usr_beatriz",
+      "username": "beatriz",
+      "name": "Beatriz Lima",
+      "passwordHash": "$2b$10$1xdNBFsyb3hSOjiyNwbLRucWhfJyDj9nL.UtZKnqKkuEHgD/kdYue",
+      "birthDate": "2001-03-10",
+      "age": 25,
+      "bio": "Médica veterinária, mãe de dois gatinhos 🐱. Adoro praias, corrida matinal e doces artesanais.",
+      "location": "Campinas, SP",
+      "gender": "woman",
+      "lookingFor": "everyone",
+      "avatar": "https://images.unsplash.com/photo-1534528741775-53994a69daeb?q=80&w=600&auto=format&fit=crop",
+      "photos": [
+        "https://images.unsplash.com/photo-1534528741775-53994a69daeb?q=80&w=600&auto=format&fit=crop",
+        "https://images.unsplash.com/photo-1517841905240-472988babdf9?q=80&w=600&auto=format&fit=crop"
+      ],
+      "interests": [
+        "Animais",
+        "Corrida",
+        "Viagens",
+        "Culinária"
+      ],
+      "occupation": "Veterinária",
+      "role": "user",
+      "status": "offline",
+      "lastSeen": "2026-08-09T06:24:39.173Z",
+      "createdAt": "2026-08-09T07:24:39.000Z"
+    },
+    {
+      "id": "usr_lucas",
+      "username": "lucas",
+      "name": "Lucas Mendes",
+      "passwordHash": "$2b$10$1xdNBFsyb3hSOjiyNwbLRucWhfJyDj9nL.UtZKnqKkuEHgD/kdYue",
+      "birthDate": "1996-08-25",
+      "age": 29,
+      "bio": "Chef executivo em busca da melhor sobremesa da cidade 🍰. Amo surf, música brasileira e cozinhar para os amigos.",
+      "location": "Santos, SP",
+      "gender": "man",
+      "lookingFor": "woman",
+      "avatar": "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?q=80&w=600&auto=format&fit=crop",
+      "photos": [
+        "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?q=80&w=600&auto=format&fit=crop"
+      ],
+      "interests": [
+        "Gastronomia",
+        "Surf",
+        "Música MPB",
+        "Vinhos"
+      ],
+      "occupation": "Chef de Cozinha",
+      "role": "user",
+      "status": "offline",
+      "lastSeen": "2026-08-09T05:24:39.173Z",
+      "createdAt": "2026-08-09T07:24:39.000Z"
+    },
+    {
+      "id": "usr_camila",
+      "username": "camila",
+      "name": "Camila Rocha",
+      "passwordHash": "$2b$10$1xdNBFsyb3hSOjiyNwbLRucWhfJyDj9nL.UtZKnqKkuEHgD/kdYue",
+      "birthDate": "1998-12-02",
+      "age": 27,
+      "bio": "Jornalista e podcaster. Apaixonada por séries de mistério, livros antigos e passeios de bicicleta no parque 🚴‍♀️📚.",
+      "location": "São Paulo, SP",
+      "gender": "woman",
+      "lookingFor": "man",
+      "avatar": "https://images.unsplash.com/photo-1544005313-94ddf0286df2?q=80&w=600&auto=format&fit=crop",
+      "photos": [
+        "https://images.unsplash.com/photo-1544005313-94ddf0286df2?q=80&w=600&auto=format&fit=crop"
+      ],
+      "interests": [
+        "Livros",
+        "Podcasts",
+        "Bicicleta",
+        "Séries",
+        "Café"
+      ],
+      "occupation": "Jornalista",
+      "role": "user",
+      "status": "online",
+      "lastSeen": "2026-08-09T07:24:39.000Z",
+      "createdAt": "2026-08-09T07:24:39.000Z"
+    }
+  ],
+  "likes": [
+    {
+      "id": "like_1786261145762_qjj4i",
+      "fromUserId": "usr_admin",
+      "toUserId": "usr_marina",
+      "type": "like",
+      "createdAt": "2026-08-09T07:39:05.762Z"
+    },
+    {
+      "id": "like_1786261147539_pxsyk",
+      "fromUserId": "usr_admin",
+      "toUserId": "usr_asaph",
+      "type": "like",
+      "createdAt": "2026-08-09T07:39:07.539Z"
+    },
+    {
+      "id": "like_1786261148745_nugys",
+      "fromUserId": "usr_admin",
+      "toUserId": "usr_beatriz",
+      "type": "like",
+      "createdAt": "2026-08-09T07:39:08.745Z"
+    },
+    {
+      "id": "like_1786261149765_0urxs",
+      "fromUserId": "usr_admin",
+      "toUserId": "usr_lucas",
+      "type": "like",
+      "createdAt": "2026-08-09T07:39:09.765Z"
+    },
+    {
+      "id": "like_1786261150979_5194g",
+      "fromUserId": "usr_admin",
+      "toUserId": "usr_camila",
+      "type": "superlike",
+      "createdAt": "2026-08-09T07:39:10.979Z"
+    }
+  ],
+  "matches": [],
+  "conversations": [],
+  "messages": [],
+  "notifications": [
+    {
+      "id": "notif_welcome_marina",
+      "userId": "usr_marina",
+      "type": "system",
+      "title": "Bem-vinda ao Ignite Match!",
+      "content": "Seu perfil foi criado com sucesso. Comece a deslizar para encontrar seu match.",
+      "read": false,
+      "createdAt": "2026-08-09T07:24:39.000Z"
+    },
+    {
+      "id": "notif_welcome_asaph",
+      "userId": "usr_asaph",
+      "type": "system",
+      "title": "Bem-vindo ao Ignite Match!",
+      "content": "Seu perfil foi criado com sucesso. Comece a deslizar para encontrar seu match.",
+      "read": false,
+      "createdAt": "2026-08-09T07:24:39.000Z"
+    }
+  ],
+  "reports": [],
+  "blocks": [],
+  "adminLogs": [
+    {
+      "id": "log_seed",
+      "adminId": "usr_admin",
+      "adminUsername": "admin",
+      "action": "INITIALIZE_SYSTEM",
+      "target": "System Database",
+      "details": "Banco de dados inicializado com sucesso com perfis pré-configurados.",
+      "createdAt": "2026-08-09T07:24:39.000Z"
+    }
+  ]
+}

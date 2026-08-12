@@ -1,0 +1,6 @@
+{
+  "name": "IGNITE TEEN - App de Relacionamento",
+  "description": "Aplicativo completo de relacionamento com descoberta, swipe, matches, chat em tempo real, perfil, fotos, notificações e painel administrativo.",
+  "requestFramePermissions": ["camera"],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

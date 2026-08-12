@@ -1,0 +1,26 @@
+User-agent: *
+Disallow: /admin
+Disallow: /painel-admin
+Disallow: /api/admin
+Disallow: /api/
+Disallow: /chat
+Disallow: /matches
+Disallow: /profile
+
+# Block bad bots and automated crawlers from admin routes
+User-agent: Googlebot
+Disallow: /admin
+Disallow: /painel-admin
+Disallow: /api/admin
+
+User-agent: Bingbot
+Disallow: /admin
+Disallow: /painel-admin
+Disallow: /api/admin
+
+# Public landing pages allowed
+Allow: /
+Allow: /login
+Allow: /register
+
+Sitemap: /sitemap.xml
