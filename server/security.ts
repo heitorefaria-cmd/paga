@@ -1,11 +1,11 @@
 import rateLimit from 'express-rate-limit';
 
-export const authLimiter = rateLimit({
-  windowMs: 15 * 60 * 1000, // 15 minutes
-  max: 15, // Stricter limit: 15 login/register attempts per 15 minutes
+export const loginLimiter = rateLimit({
+  windowMs: 3 * 60 * 1000, // 3 minutes
+  max: 10, // Limit login attempts to 10 per 3 minutes
   standardHeaders: true,
   legacyHeaders: false,
-  message: { error: 'Muitas tentativas de autenticação. Por favor, aguarde 15 minutos.' }
+  message: { error: 'Muitas tentativas de login. Por favor, aguarde 3 minutos.' }
 });
 
 export const apiLimiter = rateLimit({

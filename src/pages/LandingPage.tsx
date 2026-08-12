@@ -53,7 +53,7 @@ export const LandingPage: React.FC<LandingPageProps> = ({ onOpenAuth }) => {
         <div className="space-y-8 text-center lg:text-left">
           <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#111] border border-red-500/30 text-red-500 text-[10px] font-bold uppercase tracking-[0.2em]">
             <Sparkles className="w-3.5 h-3.5" />
-            <span>Exclusivo Teen (12 a 17 Anos) • Proibido 18+</span>
+            <span>Exclusivo Teen (14 a 17 Anos) • Proibido 18+</span>
           </div>
 
           <h1 className="text-4xl sm:text-6xl font-black tracking-tight leading-tight">

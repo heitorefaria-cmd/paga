@@ -2,12 +2,12 @@ import { Router, Response } from 'express';
 import bcrypt from 'bcryptjs';
 import { loadDB, saveDB, DBUser } from '../db.js';
 import { generateToken, requireAuth, sanitizeUser, AuthenticatedRequest } from '../auth.js';
-import { authLimiter, sanitizeText, contentSafetyCheck, isValidImageUrl } from '../security.js';
+import { loginLimiter, sanitizeText, contentSafetyCheck, isValidImageUrl } from '../security.js';
 
 const router = Router();
 
-// Register new user
-router.post('/register', authLimiter, (req, res) => {
+// Register new user (No rate limit so user creation is seamless)
+router.post('/register', (req, res) => {
   try {
     const { username, name, password, birthDate, gender, lookingFor, bio, location, occupation, avatar } = req.body;
 
@@ -39,7 +39,7 @@ router.post('/register', authLimiter, (req, res) => {
       return res.status(400).json({ error: 'A senha deve ter pelo menos 6 caracteres.' });
     }
 
-    // Age validation (12-17 years old only - prohibited 18+)
+    // Age validation (14-17 years old only - prohibited 18+)
     const bDate = new Date(birthDate);
     const today = new Date();
     let age = today.getFullYear() - bDate.getFullYear();
@@ -48,12 +48,12 @@ router.post('/register', authLimiter, (req, res) => {
       age--;
     }
 
-    if (isNaN(age) || age < 12) {
-      return res.status(400).json({ error: 'Mínimo de 12 anos para se cadastrar.' });
+    if (isNaN(age) || age < 14) {
+      return res.status(400).json({ error: 'Mínimo de 14 anos para se cadastrar.' });
     }
 
-    if (age >= 18) {
-      return res.status(400).json({ error: 'Proibido para maiores de 18 anos. Aplicativo exclusivo para menores (12 a 17 anos).' });
+    if (age > 17) {
+      return res.status(400).json({ error: 'Proibido para maiores de 17 anos. Aplicativo exclusivo para adolescentes de 14 a 17 anos.' });
     }
 
     const db = loadDB();
@@ -120,7 +120,7 @@ router.post('/register', authLimiter, (req, res) => {
 });
 
 // Login
-router.post('/login', authLimiter, (req, res) => {
+router.post('/login', loginLimiter, (req, res) => {
   try {
     const { username, password } = req.body;
 
