@@ -7,9 +7,10 @@ interface SwipeCardProps {
   user: User;
   onSwipe: (direction: 'left' | 'right' | 'superlike') => void;
   onReportClick: (user: User) => void;
+  onViewProfile?: (user: User) => void;
 }
 
-export const SwipeCard: React.FC<SwipeCardProps> = ({ user, onSwipe, onReportClick }) => {
+export const SwipeCard: React.FC<SwipeCardProps> = ({ user, onSwipe, onReportClick, onViewProfile }) => {
   const [photoIndex, setPhotoIndex] = useState(0);
   const [showDetails, setShowDetails] = useState(false);
 
@@ -148,7 +149,8 @@ export const SwipeCard: React.FC<SwipeCardProps> = ({ user, onSwipe, onReportCli
               </div>
 
               <button
-                onClick={() => setShowDetails(!showDetails)}
+                onClick={() => onViewProfile ? onViewProfile(user) : setShowDetails(!showDetails)}
+                title="Ver perfil completo"
                 className="p-2.5 rounded-full bg-[#1a1a1a] hover:bg-gray-800 text-white backdrop-blur-md transition-all cursor-pointer border border-white/10"
               >
                 <Info className="w-5 h-5 text-red-500" />

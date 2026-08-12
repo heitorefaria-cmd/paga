@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from 'react';
-import { Heart, MessageCircle, Sparkles, ChevronRight, User as UserIcon } from 'lucide-react';
+import { Heart, MessageCircle, Sparkles, ChevronRight, User as UserIcon, Eye } from 'lucide-react';
 import { useAuth } from '../context/AuthContext';
-import { Match } from '../types';
+import { Match, User } from '../types';
+import UserProfileModal from '../components/UserProfileModal';
 
 interface MatchesPageProps {
   onOpenChat: (conversationId?: string) => void;
@@ -12,6 +13,10 @@ export const MatchesPage: React.FC<MatchesPageProps> = ({ onOpenChat }) => {
   const [matches, setMatches] = useState<Match[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
+  const [selectedUserForProfile, setSelectedUserForProfile] = useState<{
+    user: User;
+    conversationId?: string;
+  } | null>(null);
 
   const fetchMatches = async () => {
     if (!token) return;
@@ -42,6 +47,18 @@ export const MatchesPage: React.FC<MatchesPageProps> = ({ onOpenChat }) => {
 
   return (
     <div className="max-w-4xl mx-auto px-4 py-8 space-y-8">
+      {/* Profile Modal */}
+      {selectedUserForProfile && (
+        <UserProfileModal
+          user={selectedUserForProfile.user}
+          onClose={() => setSelectedUserForProfile(null)}
+          onOpenChat={() => {
+            onOpenChat(selectedUserForProfile.conversationId);
+            setSelectedUserForProfile(null);
+          }}
+        />
+      )}
+
       {/* Title */}
       <div className="flex items-center justify-between pb-4 border-b border-white/10">
         <div>
@@ -156,7 +173,19 @@ export const MatchesPage: React.FC<MatchesPageProps> = ({ onOpenChat }) => {
                     </div>
                   </div>
 
-                  <ChevronRight className="w-5 h-5 text-gray-600 group-hover:text-white transition-colors" />
+                  <div className="flex items-center gap-2">
+                    <button
+                      onClick={(e) => {
+                        e.stopPropagation();
+                        setSelectedUserForProfile({ user: other, conversationId: m.conversationId });
+                      }}
+                      title="Ver perfil completo"
+                      className="p-2.5 rounded-xl bg-white/5 hover:bg-red-600/20 text-gray-400 hover:text-red-400 border border-white/10 transition-all cursor-pointer"
+                    >
+                      <Eye className="w-4 h-4" />
+                    </button>
+                    <ChevronRight className="w-5 h-5 text-gray-600 group-hover:text-white transition-colors" />
+                  </div>
                 </div>
               );
             })}

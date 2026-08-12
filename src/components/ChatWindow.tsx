@@ -1,8 +1,9 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { Send, ShieldAlert, Check, CheckCheck, User as UserIcon, Lock, ArrowLeft } from 'lucide-react';
+import { Send, ShieldAlert, Check, CheckCheck, User as UserIcon, Lock, ArrowLeft, Eye } from 'lucide-react';
 import { useAuth } from '../context/AuthContext';
 import { useSocket } from '../context/SocketContext';
 import { Message, User } from '../types';
+import UserProfileModal from './UserProfileModal';
 
 interface ChatWindowProps {
   conversationId: string;
@@ -25,6 +26,7 @@ export const ChatWindow: React.FC<ChatWindowProps> = ({
   const [loading, setLoading] = useState(true);
   const [sending, setSending] = useState(false);
   const [error, setError] = useState<string | null>(null);
+  const [showProfile, setShowProfile] = useState(false);
 
   const messagesEndRef = useRef<HTMLDivElement>(null);
   const typingTimeoutRef = useRef<NodeJS.Timeout | null>(null);
@@ -125,10 +127,22 @@ export const ChatWindow: React.FC<ChatWindowProps> = ({
   };
 
   return (
-    <div className="flex flex-col h-full bg-[#0A0A0A] rounded-2xl border border-white/10 overflow-hidden shadow-2xl">
+    <div className="flex flex-col h-full min-h-0 bg-[#0A0A0A] rounded-2xl border border-white/10 overflow-hidden shadow-2xl relative">
+      {/* Profile Modal */}
+      {showProfile && (
+        <UserProfileModal
+          user={otherUser}
+          onClose={() => setShowProfile(false)}
+          onReportClick={(u) => {
+            setShowProfile(false);
+            onReportClick(u);
+          }}
+        />
+      )}
+
       {/* Header */}
-      <div className="flex items-center justify-between p-4 bg-[#111] border-b border-white/10">
-        <div className="flex items-center gap-3">
+      <div className="flex-shrink-0 flex items-center justify-between p-3.5 bg-[#111] border-b border-white/10">
+        <div className="flex items-center gap-3 min-w-0">
           {onBackMobile && (
             <button
               onClick={onBackMobile}
@@ -138,37 +152,44 @@ export const ChatWindow: React.FC<ChatWindowProps> = ({
             </button>
           )}
 
-          <div className="relative">
-            <img
-              src={otherUser.avatar}
-              alt={otherUser.name}
-              className="w-11 h-11 rounded-xl object-cover ring-2 ring-red-600/60"
-            />
-            <span
-              className={`absolute -bottom-1 -right-1 w-3.5 h-3.5 rounded-full border-2 border-[#050505] ${
-                otherUser.status === 'online' ? 'bg-emerald-500' : 'bg-gray-600'
-              }`}
-            />
-          </div>
+          <button
+            onClick={() => setShowProfile(true)}
+            className="flex items-center gap-3 text-left group hover:opacity-90 transition-opacity cursor-pointer min-w-0"
+            title="Ver perfil completo"
+          >
+            <div className="relative flex-shrink-0">
+              <img
+                src={otherUser.avatar}
+                alt={otherUser.name}
+                className="w-11 h-11 rounded-xl object-cover ring-2 ring-red-600/60 group-hover:ring-red-500 transition-all"
+              />
+              <span
+                className={`absolute -bottom-1 -right-1 w-3.5 h-3.5 rounded-full border-2 border-[#050505] ${
+                  otherUser.status === 'online' ? 'bg-emerald-500' : 'bg-gray-600'
+                }`}
+              />
+            </div>
 
-          <div>
-            <h3 className="font-bold text-white text-base flex items-center gap-2">
-              {otherUser.name}
-            </h3>
-            <span className="text-xs text-gray-400">
-              {isOtherUserTyping ? (
-                <span className="text-red-400 font-bold uppercase tracking-wider text-[10px] animate-pulse">Digitando...</span>
-              ) : otherUser.status === 'online' ? (
-                <span className="text-emerald-400 text-[10px] uppercase font-bold tracking-wider">Online agora</span>
-              ) : (
-                <span className="text-gray-500 text-[10px] uppercase font-bold tracking-wider">Offline</span>
-              )}
-            </span>
-          </div>
+            <div className="min-w-0">
+              <h3 className="font-bold text-white text-base flex items-center gap-1.5 truncate group-hover:text-red-400 transition-colors">
+                <span className="truncate">{otherUser.name}</span>
+                <Eye className="w-3.5 h-3.5 text-gray-400 group-hover:text-red-400 flex-shrink-0" />
+              </h3>
+              <span className="text-xs text-gray-400 block truncate">
+                {isOtherUserTyping ? (
+                  <span className="text-red-400 font-bold uppercase tracking-wider text-[10px] animate-pulse">Digitando...</span>
+                ) : otherUser.status === 'online' ? (
+                  <span className="text-emerald-400 text-[10px] uppercase font-bold tracking-wider">Online agora • Ver perfil</span>
+                ) : (
+                  <span className="text-gray-500 text-[10px] uppercase font-bold tracking-wider">Offline • Ver perfil</span>
+                )}
+              </span>
+            </div>
+          </button>
         </div>
 
         {/* Security & Report Options */}
-        <div className="flex items-center gap-2">
+        <div className="flex items-center gap-2 flex-shrink-0">
           <div className="hidden sm:flex items-center gap-1.5 px-3 py-1 rounded-full bg-white/5 border border-white/10 text-[10px] font-bold uppercase tracking-widest text-gray-400">
             <Lock className="w-3 h-3 text-red-500" />
             <span>Criptografado</span>
@@ -184,8 +205,8 @@ export const ChatWindow: React.FC<ChatWindowProps> = ({
         </div>
       </div>
 
-      {/* Messages List Area */}
-      <div className="flex-1 p-4 overflow-y-auto space-y-3 bg-[#050505]">
+      {/* Messages List Area - Strict overflow containment */}
+      <div className="flex-1 min-h-0 p-4 overflow-y-auto space-y-3 bg-[#050505] scrollbar-thin scrollbar-thumb-zinc-800 scrollbar-track-transparent">
         {loading ? (
           <div className="flex items-center justify-center h-full text-gray-500 text-xs font-bold uppercase tracking-widest">
             Carregando mensagens...

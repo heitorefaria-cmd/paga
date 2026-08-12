@@ -5,6 +5,7 @@ import { useSocket } from '../context/SocketContext';
 import SwipeCard from '../components/SwipeCard';
 import MatchModal from '../components/MatchModal';
 import ReportModal from '../components/ReportModal';
+import UserProfileModal from '../components/UserProfileModal';
 import { User } from '../types';
 
 interface DiscoveryPageProps {
@@ -27,6 +28,7 @@ export const DiscoveryPage: React.FC<DiscoveryPageProps> = ({ onOpenChat }) => {
 
   // Active report user modal state
   const [reportTargetUser, setReportTargetUser] = useState<User | null>(null);
+  const [viewProfileUser, setViewProfileUser] = useState<User | null>(null);
 
   const fetchDiscoveryStack = async () => {
     if (!token) return;
@@ -132,6 +134,18 @@ export const DiscoveryPage: React.FC<DiscoveryPageProps> = ({ onOpenChat }) => {
         />
       )}
 
+      {/* Profile Detail Modal */}
+      {viewProfileUser && (
+        <UserProfileModal
+          user={viewProfileUser}
+          onClose={() => setViewProfileUser(null)}
+          onReportClick={(u) => {
+            setViewProfileUser(null);
+            setReportTargetUser(u);
+          }}
+        />
+      )}
+
       {loading ? (
         <div className="flex flex-col items-center justify-center p-12 text-center space-y-4">
           <div className="w-16 h-16 rounded-2xl bg-gradient-to-tr from-red-600 to-rose-500 p-0.5 animate-bounce shadow-xl shadow-red-600/30">
@@ -179,6 +193,7 @@ export const DiscoveryPage: React.FC<DiscoveryPageProps> = ({ onOpenChat }) => {
             user={currentProfile}
             onSwipe={(dir) => handleSwipe(currentProfile, dir)}
             onReportClick={(u) => setReportTargetUser(u)}
+            onViewProfile={(u) => setViewProfileUser(u)}
           />
         </div>
       )}

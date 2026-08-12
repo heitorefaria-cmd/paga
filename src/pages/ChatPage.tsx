@@ -73,15 +73,15 @@ export const ChatPage: React.FC<ChatPageProps> = ({ initialConversationId }) => 
         />
       )}
 
-      <div className="grid grid-cols-1 md:grid-cols-12 gap-6 h-full">
+      <div className="grid grid-cols-1 md:grid-cols-12 gap-6 h-full min-h-0">
         {/* Left Column: Conversations List */}
         <div
-          className={`md:col-span-4 lg:col-span-4 flex flex-col bg-[#0A0A0A] border border-white/10 rounded-2xl p-4 h-full ${
+          className={`md:col-span-4 lg:col-span-4 flex flex-col bg-[#0A0A0A] border border-white/10 rounded-2xl p-4 h-full min-h-0 overflow-hidden ${
             selectedConvId ? 'hidden md:flex' : 'flex'
           }`}
         >
           {/* Header */}
-          <div className="pb-4 mb-4 border-b border-white/10">
+          <div className="pb-4 mb-4 border-b border-white/10 flex-shrink-0">
             <h2 className="text-xl font-black text-white flex items-center gap-2 mb-3">
               <MessageCircle className="w-5 h-5 text-red-500" />
               <span>Mensagens</span>
@@ -101,7 +101,7 @@ export const ChatPage: React.FC<ChatPageProps> = ({ initialConversationId }) => 
           </div>
 
           {/* Conversations Items List */}
-          <div className="flex-1 overflow-y-auto space-y-2 pr-1">
+          <div className="flex-1 min-h-0 overflow-y-auto space-y-2 pr-1">
             {loading ? (
               <div className="p-8 text-center text-xs font-bold uppercase tracking-widest text-gray-500">Carregando conversas...</div>
             ) : filtered.length === 0 ? (
@@ -158,7 +158,7 @@ export const ChatPage: React.FC<ChatPageProps> = ({ initialConversationId }) => 
 
         {/* Right Column: Active Chat Window */}
         <div
-          className={`md:col-span-8 lg:col-span-8 h-full ${
+          className={`md:col-span-8 lg:col-span-8 h-full min-h-0 ${
             selectedConvId ? 'flex' : 'hidden md:flex'
           } flex-col`}
         >
