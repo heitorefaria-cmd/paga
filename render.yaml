@@ -1,0 +1,8 @@
+﻿services:
+  - type: web
+    name: paga-app
+    runtime: node
+    region: ohio
+    plan: free
+    buildCommand: npm install -g bun && bun install && bun run build
+    startCommand: bun start
